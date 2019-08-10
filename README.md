@@ -202,4 +202,12 @@ We divide our entire web project into Components tath we add together in the app
     <div class=".app-servers"></div>
     ```
     
-   No other selctor method such as by ID or 3rd party methods are allowed. Default is to use like Elements.
+   No other selector method such as by ID or 3rd party methods are allowed. Default is to use like Elements.
+
+## Data Binding
+Data Binding is the communication of data between your business logic and the HTML templates.
+
+Different types of communication :
+1. Output data - Use string interpolation : {{ }}, property-binding : [property] = "data"
+2. React to user events - Event binding : (event) = 'expression'
+3. Two-way binding : [(ngmodel)] = 'data'
