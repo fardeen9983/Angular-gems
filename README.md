@@ -161,4 +161,31 @@ We divide our entire web project into Components tath we add together in the app
     
     Now we can simple modify the templates and use the ```app-server``` selector in it and replicate it to give an idea of multiple server instances used in the servers used.
      
-      
+1. Instead of creating template files for each component we can write inline HTML code using the ```template``` property of the Component.
+    ```typescript
+    @Component({
+      selector: 'app-servers',
+      template: `
+        <app-server></app-server>
+        <app-server></app-server>
+        <app-server></app-server>
+        <app-server></app-server>`,
+      styleUrls: ['./servers.component.css']
+    })
+    ```  
+1. Also we can style to our component templates using mutliple styleshhets using inline code or external file by using the ```styleUrls``` or the ```styles``` array  of the ```Component```
+1. Selectors can be created as tag attributes rather than tags themselves using a very CSS like selector property. 
+
+    For ex. in the selector tab we can use
+    ```typescript
+    @Component({
+      // tslint:disable-next-line:component-selector
+      selector: '[app-servers]',
+    })
+    ```
+    And in the template file in place of tags we can use them as attributes
+    ```html
+    <div app-servers></div>
+    <!-- instead of -->
+    <app-servers></app-servers>
+    ```
