@@ -41,13 +41,12 @@
     To do that we edit the angular.json config file:
     ```json
     {
-        'architect' : 
+        "architect" : 
             {
-                'build' : 
+                "build" : 
                     {
-                        styles:[
-                            ...
-                            'node_modules/bootstrap/dist/css/bootstrap.min/css'
+                        "styles":[
+                            "node_modules/bootstrap/dist/css/bootstrap.min/css"
                         ]         
                     }
             }
@@ -150,4 +149,16 @@ We divide our entire web project into Components tath we add together in the app
         <h1>Hello World!!!! This is the app component</h1>
         <app-server></app-server>
         ```
-   
+1. Now we can also create a component using the AngularCLI tools:
+    ```bash
+    ng generate component servers
+    OR
+    ng g c servers
+    ```
+    This will automatically create a new Component and required files for it and also will make necessary changes in the ```app.module.ts``` file
+    
+    The ```servers.component.spec.ts``` is a file generated and used for testing the components and can be removed.
+    
+    Now we can simple modify the templates and use the ```app-server``` selector in it and replicate it to give an idea of multiple server instances used in the servers used.
+     
+      
