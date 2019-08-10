@@ -256,3 +256,23 @@ HTML template
 ```html
 <button class="btn btn-primary" [disabled]="!allowNewServer" >Add Server</button>
 ```
+### Event Binding
+We can call TS functions as reaction to user actions such as clicks on an element.
+1. First we define the function we want to execute in the Component TS file
+      ```typescript
+      export class ServersComponent implements OnInit {
+        serverCreationStatus = 'No servers created';
+        onCreateServer(){
+          this.serverCreationStatus = 'Server was created';
+        }
+      }
+      ```
+    We can also call this code inside the template, but its better in the component logic file.
+2. Next we need to assign this function to handle the user generated events. 
+
+    For that on the element we want to listen for events we use ( event_name ) to access the event and assign the function
+    ```html
+    <button [disabled]="!allowNewServer" class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
+    <p>{{ serverCreationStatus }}</p>
+    ```
+    
