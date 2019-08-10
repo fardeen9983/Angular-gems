@@ -189,3 +189,17 @@ We divide our entire web project into Components tath we add together in the app
     <!-- instead of -->
     <app-servers></app-servers>
     ```
+  
+    Other method method is to use them as class. For ex:
+    ```typescript
+        @Component({
+          // tslint:disable-next-line:component-selector
+          selector: '.app-servers',
+        })
+    ```
+    And in the template file in place of tags we can use them as attributes
+    ```html
+    <div class=".app-servers"></div>
+    ```
+    
+   No other selctor method such as by ID or 3rd party methods are allowed. Default is to use like Elements.
