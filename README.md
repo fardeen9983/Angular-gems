@@ -211,3 +211,48 @@ Different types of communication :
 1. Output data - Use string interpolation : {{ }}, property-binding : [property] = "data"
 2. React to user events - Event binding : (event) = 'expression'
 3. Two-way binding : [(ngmodel)] = 'data'
+
+### String interpolation
+We can pass data dynamically from the TS file of a component to the template and display it using the {{ }} syntax.
+
+For ex :
+
+Business logic
+```typescript
+export class ServerComponent {
+  id = 123;
+  status = 'offline';
+
+  getServerStatus() {
+    return this.status;
+  }
+}
+```
+
+Template
+```html
+<h3>Server with ID {{ id }} is {{ getServerStatus() }}.</h3>
+```
+
+### Property Binding
+Instead of passing string values to diaplay on template we can pass data as attribute/property for template tag using [ ] notation 
+
+For ex:
+
+Business logic
+```typescript
+export class ServersComponent implements OnInit {
+  allowNewServer = false;
+
+  constructor() {
+    setTimeout(() => {
+      this.allowNewServer = true;
+    }, 2000);
+  }
+
+}
+```
+HTML template
+```html
+<button class="btn btn-primary" [disabled]="!allowNewServer" >Add Server</button>
+```

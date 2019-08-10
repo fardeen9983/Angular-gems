@@ -5,8 +5,8 @@ import {Component} from '@angular/core';
   templateUrl: './server.component.html'
 })
 export class ServerComponent {
-  id: number = 123;
-  status: string = 'offline';
+  id = 123;
+  status = 'offline';
 
   getServerStatus() {
     return this.status;
