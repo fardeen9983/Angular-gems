@@ -1,27 +1,153 @@
-# MyApp
+# Angular 2 
+## Structure
+1. src folder
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.0.
+    Containes all the necessary TS, HTML and CSS/SCSS files for app modules and components.
+2. Index file
+    
+    All the content of the index file is added dynamically using xml tags for custom components using their selector attributes.
+    
+    For ex:
+    ```html
+    <app-root></app-root>
+    ```
+    This will inject code of a component with said selector value.
 
-## Development server
+3. Exporting values for Template
+    
+    For each component we have a tag, a template and list of css scripts. We can pass template variables by exporting a class with needed fields in the JS/TS file for the component.
+4. Directives:
+    
+    Directives let angular listen to HTML fields and store them in given variables for later use in the file.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+    For Ex. we want to read values from file and display in some other field. So first we add the ngModel directive to it and display it in desired tag:
+    ```html
+    <input type='text' [(ngModel)]='name'>
+    <p>{{ name }}</p>
+    ```
+    This wont actually do anything as we need to add a module for handling angular forms in the ```app.module.ts``` file
+    ```ts
+    import { FormsModule } from '@angular/forms';
+    ```
+    Then we need to add it to the list of imported modules in the App NgModule part.
+5. Adding Bootstrap to Angular Project
 
-## Code scaffolding
+    First install the bootstrap package from npm
+    ```npm
+    npm i --save bootstrap@latest
+    ```
+    Then we need to make the angular app aware about this styling module.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+    To do that we edit the angular.json config file:
+    ```json
+    {
+        'architect' : 
+            {
+                'build' : 
+                    {
+                        styles:[
+                            ...
+                            'node_modules/bootstrap/dist/css/bootstrap.min/css'
+                        ]         
+                    }
+            }
+    }
+    ```
+1. On running the ```ng serve``` command our project is rebuild and JS bundle scripts are added to the index file that dynamically injects components in the web page.
 
-## Build
+1. index.html 
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+    The actual HTML content that is single page being served by the angualr app
+1. main.ts 
+    
+    This is the first file to be executed which maps together the single web page site to be displayed with necessary injections of further components.
 
-## Running unit tests
+    In that file we import the module for our angular app ```app.module.ts``` and loads that module.
+    ```ts
+    platformBrowserDynamic().bootstrapModule(AppModule).catch(err => console.error(err));
+    ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    When the main.ts file bootstraps the AppModule it searches for that NgModule and within it we provide information about the component that should be loaded.
+    ```ts
+    @NgModule({
+      declarations: [
+        AppComponent
+      ],
+      imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+      ],
+      providers: [],
+      // This is where we tell the boostrap to find following component
+      bootstrap: [AppComponent]
+    })
+    ```
+    Then it looks for the AppComponent where we have defined the @Component and exported template variables.
+1. src/app
 
-## Running end-to-end tests
+    1. app.component.html - The main content of the starting app
+    1. app.component.ts - Describes the Typescript code for the component including the selector value which will mapped to the tag in the corresponding HTML tag in the index.html. The template for this component is the above document
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Components
+We divide our entire web project into Components tath we add together in the app component
+1. A root app component is loaded on satrtup (app-component) to which we will add other components.
+1. All new components are to be stored in a subfolder of src/app directory with the name of the component for simplicity
 
-## Further help
+    For ex: server component:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+    1. To create a component create a file like ```server.component.ts```
+    1. A component is basically a class we need to export. so lets create a class ```ServerComponent```
+    1. But this class next requires a decorator ```@Component()``` to make it identified as a Component.
+    1. This component decorator has to be imported first
+        ```ts
+        import { Component } from @angular/core;
+        ```
+    1. The component decorator next takes a JS object for specifying attributes.
+        1. selector - Maps the tag of string value to the component. Naming convention :  ```app-component-name```
+        1. templateUrl - This is the external HTML file that acts as template for this component.
+        
+            The template file has to be created in the same component subfolder as ```server.component.html```
+            
+            Next we point his templateUrl to this file in TS syntax as ```./serve.component.html```
+
+    1. Before we start making use of this component we need to maake changes to ```app.module.ts```. Components are building blocks for the web app but  modules are used to bundle them together and export as packages. 
+
+        For smaller projects we use a single app module, but for larger ones we can split them into more modules.
+
+        Modules are basically bundles of fucntionalities and tells angular app of which  features we can use.
+
+        Modulesare are also classes with a special decorator : ```@NgModule``` from ```@angular/core``` library. Ex : 
+        ```ts
+        @NgModule({
+          declarations: [
+            AppComponent
+          ],
+          imports: [
+            BrowserModule,
+            AppRoutingModule,
+            FormsModule
+          ],
+          providers: [],
+          bootstrap: [AppComponent]
+        })
+        export class AppModule { }
+        ```
+        We can add multiple modules in the app module using the imports array
+
+        Now all that is left is to register the newly created component in the NgModule's declarations array after importing the TS file.
+        ```ts
+        @NgModule({
+          declarations: [
+            AppComponent,
+            ServerComponent
+          ],
+            ...
+        })
+        ```
+    1. Now to actually use this component we need to add its selctor tag in an HTML file. We cannot do that in the index file, as it already has the root component. So instead we can add the selector tag in the ```app.component.html``` file.
+        ```html
+        <h1>Hello World!!!! This is the app component</h1>
+        <app-server></app-server>
+        ```
+   
