@@ -275,4 +275,28 @@ We can call TS functions as reaction to user actions such as clicks on an elemen
     <button [disabled]="!allowNewServer" class="btn btn-primary" (click)="onCreateServer()">Add Server</button>
     <p>{{ serverCreationStatus }}</p>
     ```
-    
+
+3. Another example
+
+   Take form input to generate dynamic output
+    ```html
+    <label>Server Name</label>
+    <input type="text" class="form-control" (input)="onUpdateServerName($event)"><br>
+    ```
+    The ``onUpdateServerName`` method is called upon whenever we make changes to the input field.
+
+    All the information about this event can be passed onto the function using the implicit variable ``event``
+
+    Updating the backend TS code:
+    ```typescript
+    onUpdateServerName(event: Event) {
+        this.serverName = (event.target as HTMLInputElement).value;
+      }
+    ```
+### Two-way Binding
+For Two-Way-Binding (covered in the next lecture) to work, you need to enable the ``ngModel``  directive. This is done by adding the ``FormsModule``  to the imports [ ]  array in the ``AppModule``.
+
+You then also need to add the ``import from @angular/forms``  in the ``app.module.ts`` file:
+
+> import { FormsModule } from '@angular/forms'; 
+
