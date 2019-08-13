@@ -300,3 +300,13 @@ You then also need to add the ``import from @angular/forms``  in the ``app.modul
 
 > import { FormsModule } from '@angular/forms'; 
 
+The above example is not applicable as pure Two-wayBinding as it does not propagate changes from the angular backend tot the views.
+
+To properly use two-way data binding we have to use ``NgModule`` which binds data from and to the HTML pages and the TS code.
+```html
+<input type="text" class="form-control" [(ngModel)]="serverName"><br>
+<p>{{ serverName }}</p>
+```
+Whenever we make changes to either of the codes, the changes are reflected everywhere.
+
+
