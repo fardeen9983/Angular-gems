@@ -326,3 +326,12 @@ This block of code inserted the HTML element using a ng-template. We can place h
 <ng-template #noServer> <p>No server was created</p></ng-template>
 ```
 
+Whereas structural directives which start with a ``*`` and modify the document DOM, we have another type known as attribute directives which look like simple HTML code and dont need a ``*`` to begin with. 
+
+They dont add/remove elements but simply modify the elements they are placed in. For ex:
+```html
+<h3 [ngStyle]="{ backgroundColor : getColor()}">Server with ID {{ id }} is {{ getServerStatus() }}.</h3>
+```
+The ngStyle uses property binding and expects a JS object with CSS attributes and their values. It dynamically assigns a style to the element
+ 
+
