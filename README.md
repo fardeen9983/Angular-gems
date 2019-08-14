@@ -289,7 +289,7 @@ We can call TS functions as reaction to user actions such as clicks on an elemen
 
     Updating the backend TS code:
     ```typescript
-    onUpdateServerName(event: Event) {
+    onUpdateServerName(event;: Event;) {
         this.serverName = (event.target as HTMLInputElement).value;
       }
     ```
@@ -309,4 +309,15 @@ To properly use two-way data binding we have to use ``NgModule`` which binds dat
 ```
 Whenever we make changes to either of the codes, the changes are reflected everywhere.
 
+### Directives
+Directives are instructions in the DOM. For ex Components are actually directives with templates while there can also be directives without templates.
+
+They can be configured to be select in similar fashion to css-selectors. Like class, attribute or element selector.
+
+We can have conditional code executed in the HTML file depending upon our ngModule value.
+For Ex, we will use ngIf ( * - a structural directive, changes DOM) as an attribute selector:
+```html
+<p *ngIf="serverCreated">Server was created, name is {{serverName}}</p>
+```
+The ngIf directive is conditional and it will print the corresponding element only if condition is true. 
 
