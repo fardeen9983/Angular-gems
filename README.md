@@ -314,24 +314,32 @@ Directives are instructions in the DOM. For ex Components are actually directive
 
 They can be configured to be select in similar fashion to css-selectors. Like class, attribute or element selector.
 
-We can have conditional code executed in the HTML file depending upon our ngModule value.
+1. We can have conditional code executed in the HTML file depending upon our ngModule value.
 For Ex, we will use ngIf ( * - a structural directive, changes DOM) as an attribute selector:
-```html
-<p *ngIf="serverCreated">Server was created, name is {{serverName}}</p>
-```
-The ngIf directive is conditional and it will print the corresponding element only if condition is true. 
-This block of code inserted the HTML element using a ng-template. We can place hooks in the HTML doc using ng-templates and use them with ng-IF to create if else blocks. FOr ex:
-```html
-<p *ngIf="serverCreated; else noServer" >Server was created, name is {{serverName}}</p>
-<ng-template #noServer> <p>No server was created</p></ng-template>
-```
+    ```html
+    <p *ngIf="serverCreated">Server was created, name is {{serverName}}</p>
+    ```
+    The ngIf directive is conditional and it will print the corresponding element only if condition is true. 
+    This block of code inserted the HTML element using a ng-template. We can place hooks in the HTML doc using ng-templates and use them with ng-IF to create if else blocks. FOr ex:
+    ```html
+    <p *ngIf="serverCreated; else noServer" >Server was created, name is {{serverName}}</p>
+    <ng-template #noServer> <p>No server was created</p></ng-template>
+    ```
 
-Whereas structural directives which start with a ``*`` and modify the document DOM, we have another type known as attribute directives which look like simple HTML code and dont need a ``*`` to begin with. 
+1. Whereas structural directives which start with a ``*`` and modify the document DOM, we have another type known as attribute directives which look like simple HTML code and dont need a ``*`` to begin with. 
 
-They dont add/remove elements but simply modify the elements they are placed in. For ex:
-```html
-<h3 [ngStyle]="{ backgroundColor : getColor()}">Server with ID {{ id }} is {{ getServerStatus() }}.</h3>
-```
-The ngStyle uses property binding and expects a JS object with CSS attributes and their values. It dynamically assigns a style to the element
+    They dont add/remove elements but simply modify the elements they are placed in. For ex:
+    ```html
+    <h3 [ngStyle]="{ backgroundColor : getColor()}">Server with ID {{ id }} is {{ getServerStatus() }}.</h3>
+    ```
+    The ngStyle uses property binding and expects a JS object with CSS attributes and their values. It dynamically assigns a style to the element
  
-
+3. Another use of directives is to dynamically add classes to elements using ``NgClass`` attribute directive. It again like ```NgStyle``` uses property binding and expects a JS object with class name as key and attribute values as boolean, depending upon which the CSS class is applied
+    ```html
+    <h3 [ngStyle]="{ backgroundColor : getColor()}"
+        [ngClass]="{online : status === 'online'}">Server with ID {{ id }} is {{ getServerStatus() }}.</h3>
+    ```
+4. Another Structural directive is ``ngFor`` which is used for displaying lists of elements in the HTML page.
+    ```html
+    <app-server *ngFor="let server of servers"></app-server>
+    ``` 
