@@ -320,4 +320,9 @@ For Ex, we will use ngIf ( * - a structural directive, changes DOM) as an attrib
 <p *ngIf="serverCreated">Server was created, name is {{serverName}}</p>
 ```
 The ngIf directive is conditional and it will print the corresponding element only if condition is true. 
+This block of code inserted the HTML element using a ng-template. We can place hooks in the HTML doc using ng-templates and use them with ng-IF to create if else blocks. FOr ex:
+```html
+<p *ngIf="serverCreated; else noServer" >Server was created, name is {{serverName}}</p>
+<ng-template #noServer> <p>No server was created</p></ng-template>
+```
 
