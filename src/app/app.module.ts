@@ -9,6 +9,7 @@ import {DataBindingComponent} from './data-binding/data-binding.component';
 import {ServerElementComponent} from './data-binding/server-element/server-element.component';
 import {CreationFormComponent} from './data-binding/creation-form/creation-form.component';
 import {DirectivesComponent} from './directives/directives.component';
+import {BasicHighlightDirective} from "./directives/basic-highlight/basic-highlight.directive";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {DirectivesComponent} from './directives/directives.component';
     DataBindingComponent,
     ServerElementComponent,
     CreationFormComponent,
-    DirectivesComponent
+    DirectivesComponent,
+    BasicHighlightDirective
   ],
   imports: [
     BrowserModule,
