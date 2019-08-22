@@ -19,11 +19,11 @@ export class CreationFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  onAddServer() {
-    this.elementCreated.emit(new ServerElement(this.newServerName, this.newServerContent, 0));
+  onAddServer(serverName: string) {
+    this.elementCreated.emit(new ServerElement(serverName, this.newServerContent, 0));
   }
 
-  onAddBlueprint() {
-    this.elementCreated.emit(new ServerElement(this.newServerName, this.newServerContent, 1));
+  onAddBlueprint(serverName: string) {
+    this.elementCreated.emit(new ServerElement(serverName, this.newServerContent, 1));
   }
 }

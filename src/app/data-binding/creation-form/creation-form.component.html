@@ -3,13 +3,13 @@
   <div class="col-xs-12">
     <p>Add new Servers or Blueprints</p>
     <label for="serverName">Server Name</label>
-    <input [(ngModel)]="newServerName" class="form-control" id="serverName" type="text">
+    <input #serverNameInput class="form-control" id="serverName" type="text">
     <label for="serverContent">Server Content</label>
     <input [(ngModel)]="newServerContent" class="form-control" id="serverContent" type="text">
   </div>
 </div>
 <br>
 <div class="row btn-toolbar">
-  <button (click)="onAddServer()" class="btn btn-primary" type="'submit">Add Server</button>
-  <button (click)="onAddBlueprint()" class="btn btn-primary" type="'submit">Add Blueprint</button>
+  <button (click)="onAddServer(serverNameInput.value)" class="btn btn-primary" type="'submit">Add Server</button>
+  <button (click)="onAddBlueprint(serverNameInput.value)" class="btn btn-primary" type="'submit">Add Blueprint</button>
 </div>
