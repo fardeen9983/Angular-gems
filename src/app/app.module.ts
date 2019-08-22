@@ -10,6 +10,7 @@ import {ServerElementComponent} from './data-binding/server-element/server-eleme
 import {CreationFormComponent} from './data-binding/creation-form/creation-form.component';
 import {DirectivesComponent} from './directives/directives.component';
 import {BasicHighlightDirective} from "./directives/basic-highlight/basic-highlight.directive";
+import {BetterHighlightDirective} from './directives/better-highlight/better-highlight.directive';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {BasicHighlightDirective} from "./directives/basic-highlight/basic-highli
     ServerElementComponent,
     CreationFormComponent,
     DirectivesComponent,
-    BasicHighlightDirective
+    BasicHighlightDirective,
+    BetterHighlightDirective
   ],
   imports: [
     BrowserModule,
