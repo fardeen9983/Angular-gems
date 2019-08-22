@@ -5,12 +5,18 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {ServerComponent} from './server/server.component';
 import {ServersComponent} from './servers/servers.component';
+import { DataBindingComponent } from './data-binding/data-binding.component';
+import { ServerElementComponent } from './data-binding/server-element/server-element.component';
+import { CreationFormComponent } from './data-binding/creation-form/creation-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ServerComponent,
-    ServersComponent
+    ServersComponent,
+    DataBindingComponent,
+    ServerElementComponent,
+    CreationFormComponent
   ],
   imports: [
     BrowserModule,

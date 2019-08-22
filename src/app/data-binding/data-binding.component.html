@@ -1,0 +1,9 @@
+<div class="container">
+  <app-creation-form></app-creation-form>
+  <hr>
+  <div class="row">
+    <div class="col-xs-7">
+      <app-server-element *ngFor="let element of serverElements" [element]="element"></app-server-element>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading">{{element.name}}</div>
+  <div class="panel-body">
+    <p>
+      <strong *ngIf="element.type==0; else em" style="color: red">Content</strong>
+      <ng-template #em><em>Content</em></ng-template>
+    </p>
+  </div>
+</div>
