@@ -2,8 +2,8 @@
   <div class="panel-heading">{{element.name}}</div>
   <div class="panel-body">
     <p>
-      <strong *ngIf="element.type==0; else em" style="color: red">Content</strong>
-      <ng-template #em><em>Content</em></ng-template>
+      <strong *ngIf="element.type==0; else em" style="color: red">{{element.content}}</strong>
+      <ng-template #em><em>{{element.content}}</em></ng-template>
     </p>
   </div>
 </div>

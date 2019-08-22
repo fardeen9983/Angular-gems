@@ -7,14 +7,16 @@ import {ServerElement} from './server-element/server-element.model';
   styleUrls: ['./data-binding.component.css']
 })
 export class DataBindingComponent implements OnInit {
-  serverElements: ServerElement[] = [
-    new ServerElement('Test Server', 'Just a test', 1)
-  ];
+  serverElements: ServerElement[] = [];
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  onElementAdded(element: ServerElement) {
+    this.serverElements.push(element);
   }
 
 }

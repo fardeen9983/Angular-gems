@@ -1,5 +1,5 @@
 <div class="container">
-  <app-creation-form></app-creation-form>
+  <app-creation-form (elementCreated)="onElementAdded($event)"></app-creation-form>
   <hr>
   <div class="row">
     <div class="col-xs-7">

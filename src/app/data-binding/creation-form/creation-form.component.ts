@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ServerElement} from '../server-element/server-element.model';
 
 @Component({
@@ -10,6 +10,9 @@ export class CreationFormComponent implements OnInit {
   newServerName = '';
   newServerContent = '';
 
+  @Output()
+  elementCreated = new EventEmitter<ServerElement>();
+
   constructor() {
   }
 
@@ -17,10 +20,10 @@ export class CreationFormComponent implements OnInit {
   }
 
   onAddServer() {
-    // serverElements.push(new ServerElement(this.newServerName, this.newServerContent, 0));
+    this.elementCreated.emit(new ServerElement(this.newServerName, this.newServerContent, 0));
   }
 
   onAddBlueprint() {
-    // serverElements.push(new ServerElement(this.newServerName, this.newServerContent, 1));
+    this.elementCreated.emit(new ServerElement(this.newServerName, this.newServerContent, 1));
   }
 }
