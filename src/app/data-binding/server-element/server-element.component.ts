@@ -7,7 +7,7 @@ import {ServerElement} from './server-element.model';
   styleUrls: ['./server-element.component.css']
 })
 export class ServerElementComponent implements OnInit {
-  @Input()
+  @Input('srvElement')
   element: ServerElement;
 
   constructor() {
