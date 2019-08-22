@@ -1,15 +1,19 @@
-import {Directive, ElementRef, OnInit, Renderer2} from '@angular/core';
+import {Directive, ElementRef, HostListener, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appBetterHighlight]'
 })
-export class BetterHighlightDirective implements OnInit {
-
+export class BetterHighlightDirective {
   constructor(private element: ElementRef, private renderer: Renderer2) {
   }
 
-  ngOnInit(): void {
+  @HostListener('mouseenter')
+  mouseOver(eventData: Event) {
     this.renderer.setStyle(this.element.nativeElement, 'background-color', 'blue');
   }
 
+  @HostListener('mouseleave')
+  mouseLeave(eventData: Event) {
+    this.renderer.setStyle(this.element.nativeElement, 'background-color', 'transparent');
+  }
 }
