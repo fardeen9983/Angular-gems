@@ -11,6 +11,7 @@ import {CreationFormComponent} from './data-binding/creation-form/creation-form.
 import {DirectivesComponent} from './directives/directives.component';
 import {BasicHighlightDirective} from "./directives/basic-highlight/basic-highlight.directive";
 import {BetterHighlightDirective} from './directives/better-highlight/better-highlight.directive';
+import {UnlessDirective} from './directives/unless/unless.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {BetterHighlightDirective} from './directives/better-highlight/better-hig
     CreationFormComponent,
     DirectivesComponent,
     BasicHighlightDirective,
-    BetterHighlightDirective
+    BetterHighlightDirective,
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
