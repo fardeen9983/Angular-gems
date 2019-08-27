@@ -4,19 +4,25 @@
       <button (click)="onlyOdd = !onlyOdd" class="btn btn-primary">Only show {{onlyOdd ? 'Even' : 'Odd'}} numbers
       </button>
       <br><br>
-      <ul *appUnless="onlyOdd" class="list-group">
+      <ul *ngIf="onlyOdd" class="list-group">
         <li *ngFor="let odd of odds" [ngClass]="{odd:odd%2!==0}"
             [ngStyle]="{backgroundColor:onlyOdd?'yellow':'red'}"
             class="list-group-item">{{odd}}</li>
       </ul>
-      <ul *appUnless="!onlyOdd" class="list-group">
+      <ul *appUnless="onlyOdd" class="list-group">
         <li *ngFor="let even of evens" [ngClass]="{odd:even%2!==0}"
             [ngStyle]="{backgroundColor:onlyOdd?'yellow':'transparent'}"
             class="list-group-item">{{even}}</li>
       </ul>
-
       <pre appBasicHighlight>Hey There</pre>
       <pre [defaultColor]="'yellow'" [defaultHighlightColor]="'red'" appBetterHighlight>Hey There</pre>
+      <div [ngSwitch]="value">
+        <p *ngSwitchCase="5">Value is 5</p>
+        <p *ngSwitchCase="10">Value is 10</p>
+        <p *ngSwitchCase="15">Value is 15</p>
+        <p *ngSwitchCase="25">Value is 25</p>
+        <p *ngSwitchDefault>Value is default</p>
+      </div>
     </div>
   </div>
 </div>
